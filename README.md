@@ -42,7 +42,7 @@ where,
 
 `--alpha` is the loss weight for the self-distillation loss (`=lambda` in the paper).
 
-`--use_mse=1` if using our Self-KD approach.
+`--use_mse=1` if using our Self-KD approach otherwise `--use_mse=0`
 
 `--lr` is learning rate init.
 
