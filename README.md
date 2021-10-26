@@ -8,7 +8,7 @@ In our work, we propose an efficient self-knowledge distillation approach for fa
 
 The figure below shows our approach.
 <p align="center">
-  <img width="800" alt="fig_method" src="https://raw.githubusercontent.com/vdquang1991/self_KD_falling_detection/main/model.jpg">
+  <img width="800" alt="fig_method" src="https://github.com/vdquang1991/self_KD_falling_detection/blob/main/model.jpg">
 </p>
 
 
