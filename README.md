@@ -1,8 +1,9 @@
-# Self-Knowledge Distillation: An Efficient Approach for Falling Detection
+# Cải tiến mô hình..............
 
-By Duc-Quang Vu, Trang Phung, Mai Nguyen, Bao Yen Nguyen, Thu Hien Nguyen
+Sinh viên thực hiện Mai Nguyen, Bao Yen Nguyen
 
-## Overview
+## Tổng quan đề tài 
+mục đích là gì, hướng tiếp cận ra xaooooooooo
 Self-knowledge distillation, the related idea to knowledge distillation, is a novel approach to avoid training a large teacher network. 
 In our work, we propose an efficient self-knowledge distillation approach for falling detection. In our approach, the network shares and learns the knowledge distilled via embedded vectors from two different views of a data point. Moreover, we also present the lightweights yet robust network to address this task based on (2+1)D convolution. Our proposed network uses only 0.1M parameters that reduce hundreds of times compared to other deep networks. To evaluate the effectiveness of our proposed approach, two standard datasets such as the FDD and URFD datasets, have been experimented. The results illustrated state-of-the-art performance and outperformed that compared to independent training. Moreover, with 0.1M parameters, our network demonstrates easy deployment on edge devices, e.g., phones and cameras, in real-time without GPU.
 
