@@ -1,21 +1,21 @@
-# Cải tiến mô hình..............
+# Cải tiến mô hình học sâu cho bài toán nhận dạng hành động té ngã để hỗ trợ theo dõi người cao tuổi
 
-Sinh viên thực hiện Mai Nguyen, Bao Yen Nguyen
+Sinh viên thực hiện Mai Nguyen, Bao Yen Nguyen dưới sự hướng dẫn của cô Nguyễn Thị Thu Hiền và Thầy Vũ Đức Quang
 
 ## Tổng quan đề tài 
-mục đích là gì, hướng tiếp cận ra xaooooooooo
-Self-knowledge distillation, the related idea to knowledge distillation, is a novel approach to avoid training a large teacher network. 
-In our work, we propose an efficient self-knowledge distillation approach for falling detection. In our approach, the network shares and learns the knowledge distilled via embedded vectors from two different views of a data point. Moreover, we also present the lightweights yet robust network to address this task based on (2+1)D convolution. Our proposed network uses only 0.1M parameters that reduce hundreds of times compared to other deep networks. To evaluate the effectiveness of our proposed approach, two standard datasets such as the FDD and URFD datasets, have been experimented. The results illustrated state-of-the-art performance and outperformed that compared to independent training. Moreover, with 0.1M parameters, our network demonstrates easy deployment on edge devices, e.g., phones and cameras, in real-time without GPU.
+Tự chắt lọc tri thức, ý tưởng liên quan đến chắt lọc tri thức, là một cách tiếp cận mới lạ nhằm tránh đào tạo một mạng lưới giáo viên lớn.
+Trong công việc của mình, chúng tôi đề xuất một cách tiếp cận chắt lọc kiến thức hiệu quả để nhận dạng té ngã. Theo cách tiếp cận của chúng tôi, mạng chia sẻ và học hỏi kiến thức được chắt lọc qua các vectơ được nhúng từ hai chế độ xem khác nhau của một điểm dữ liệu. Hơn nữa, chúng tôi cũng giới thiệu mạng nhẹ nhưng mạnh mẽ để giải quyết nhiệm vụ này dựa trên tích chập (2 + 1) D. Mạng được đề xuất của chúng tôi chỉ sử dụng tham số 0,1M giảm hàng trăm lần so với các mạng sâu khác. Để đánh giá hiệu quả của cách tiếp cận được đề xuất của chúng tôi, hai bộ dữ liệu tiêu chuẩn như bộ dữ liệu FDD và URFD, đã được thử nghiệm. Kết quả cho thấy hiệu suất hiện đại và vượt trội hơn so với đào tạo độc lập. Hơn nữa, với thông số 0,1M, mạng của chúng tôi cho thấy việc triển khai dễ dàng trên các thiết bị cạnh, ví dụ: điện thoại và máy ảnh, trong thời gian thực mà không cần GPU.
 
-The figure below shows our approach.
+
+Hình dướng đây cho thấy cách tiếp cận của chúng tôi
 <p align="center">
   <img width="800" alt="fig_method" src="https://github.com/vdquang1991/self_KD_falling_detection/blob/main/model.jpg">
 </p>
 
 
-## Running the code
+## Chạy code
 
-### Requirements
+### Các thư viện cần thiết
 - Python3
 - Tensorflow (>=2.3.0)
 - Numpy 
@@ -23,19 +23,16 @@ The figure below shows our approach.
 - Open-CV
 - Scikit-learn
 - ...
-### Training
+### Đào tạo trên 2 bộ dữ liệu là FDD và URFD
 
-In this code, you can reproduce the experimental results of the falling detection task in the submitted paper.
-The FDD and URFD datasets are used during the training phase.
-Example training settings are for our proposed network.
-Detailed hyperparameter settings are enumerated in the paper.
+Trong code này, bạn có thể chạy kết quả thử nghiệm của nhiệm vụ nhận dạng té ngã trong bài báo đã gửi. Bộ dữ liệu FDD và URFD được sử dụng trong giai đoạn đào tạo. Cài đặt đào tạo mẫu dành cho mạng được đề xuất của chúng tôi. Cài đặt siêu tham số chi tiết được liệt kê trong bài báo.
 
-- Training with Self-KD
+- Đào tạo với mô hình Self-KD
 ~~~
 python train_tensor2.py --gpu=0 ----clip_len=16 --crop_size=224 --alpha=0.1 --use_mse=1 --lr=0.01 --drop_rate=0.5 --reg_factor=5e-4 --epochs=300 
 ~~~
 
-where, 
+tại, 
 
 `--clip_len` is the length of the input video clips (number of frames).
 
@@ -53,22 +50,20 @@ where,
 
 `--epochs` is the number of epochs for training. 
 
-### Dataset
-In our work, we have used two standard datasets including FDD and URFD, to evaluate the SKD's performance compared to state-of-the-art methods.
-All videos in each dataset are extracted into frames before training. 
-To extract frames from video, you can utilize the `ffmpeg` command. 
+### Tập dữ liệu
+Trong công việc này, chúng tôi đã sử dụng hai bộ dữ liệu tiêu chuẩn bao gồm FDD và URFD, để đánh giá hiệu suất của SKD so với các phương pháp hiện đại. Tất cả các video trong mỗi tập dữ liệu được trích xuất thành các khung trước khi đào tạo. Để trích xuất khung hình từ video, bạn có thể sử dụng lệnh `ffmpeg`.
 
-For examples:
+Ví dụ như:
 
 ~~~
 ffmpeg -i video_path.avi  "-vf", "fps=25" folder_path/%05d.jpg
 ~~~
 
-To create .csv files, please see `def split_train_test_data` in `gen_tensor2.py`. The structure of the csv files is as follows:
+Để tạo .csv files, please see `def split_train_test_data` in `gen_tensor2.py`. Cấu trúc của tệp csv như sau:
 ~~~
 <FOLDER>,<#START_FRAMES>,<#END_FRAMES>,<LABEL>
 ~~~
-For examples:
+Ví dụ:
 ~~~
 Coffee_room/Videos/video_38,288,304,0
 Home/Videos/video_57,16,32,0
