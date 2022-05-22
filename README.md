@@ -25,7 +25,7 @@ Hình dướng đây cho thấy cách tiếp cận của chúng tôi
 - ...
 ### Đào tạo trên 2 bộ dữ liệu là FDD và URFD
 
-Trong code này, bạn có thể chạy kết quả thử nghiệm của nhiệm vụ nhận dạng té ngã trong bài báo đã gửi. Bộ dữ liệu FDD và URFD được sử dụng trong giai đoạn đào tạo. Cài đặt đào tạo mẫu dành cho mạng được đề xuất của chúng tôi. Cài đặt siêu tham số chi tiết được liệt kê trong bài báo.
+Trong code này, bạn có thể chạy kết quả thử nghiệm của nhiệm vụ nhận dạng té ngã. Bộ dữ liệu FDD và URFD được sử dụng trong giai đoạn đào tạo. Cài đặt đào tạo mẫu dành cho mạng được đề xuất của chúng tôi. Cài đặt siêu tham số chi tiết được liệt kê trong bài báo.
 
 - Đào tạo với mô hình Self-KD
 ~~~
